@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     end
     docker.vm.network "private_network", ip: "192.168.20.10"
     #Install Docker
-    docker.vm.provision "shell", inline: "curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh"
+    docker.vm.provision "shell", inline: "curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh && apt install -y docker-compose-plugin"
     #Set ssh keys
     docker.vm.provision "shell", inline: "cat /vagrant/configs/ssl/id_bionic.pub >> .ssh/authorized_keys"
   end
